@@ -4,4 +4,6 @@
     <dimen name="paddingHorizontalButton">20dp</dimen>
     <dimen name="drawablePaddingButton">12dp</dimen>
     <dimen name="paddingVerticalButton">12dp</dimen>
+    <dimen name="textSizeButtons">28sp</dimen>
+    <dimen name="textSizeTitle">40sp</dimen>
 </resources>
