@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
@@ -19,6 +20,7 @@
         app:layout_constraintBottom_toBottomOf="@id/guidelineTitleContent"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/startGameButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="28sp"
@@ -26,14 +28,71 @@
         android:backgroundTint="?colorPrimary"
         android:background="@drawable/round_corners"
         android:textAllCaps="false"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="12dp"
-        android:drawablePadding="12dp"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
         android:drawableStart="@drawable/stars"
         android:text="@string/start_game"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
         app:layout_constraintTop_toTopOf="@id/guidelineTitleContent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/highscoresButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textColor="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
+        android:background="@drawable/round_corners"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
+        android:drawableStart="@drawable/stars"
+        android:text="@string/highscores"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/startGameButton"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/settingsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textColor="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
+        android:background="@drawable/round_corners"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
+        android:drawableStart="@drawable/stars"
+        android:text="@string/settings"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/highscoresButton"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/aboutGameButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textColor="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
+        android:background="@drawable/round_corners"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
+        android:drawableStart="@drawable/stars"
+        android:text="@string/about_my_game"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/settingsButton"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTitleContent"
