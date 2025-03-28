@@ -6,6 +6,6 @@
         <item name="fontFamily">cursive</item>
         <item name="colorPrimary">@color/secondary</item>
         <item name="colorSecondary">@color/primary</item>
-        <item name="android:textColor">@color/primary</item>
+        <item name="android:textColor">@color/secondary</item>
     </style>
 </resources>
