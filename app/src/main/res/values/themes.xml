@@ -3,6 +3,10 @@
     <style name="Base.Theme.MyGameProjekt" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="fontFamily">cursive</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="android:textColor">@color/secondary</item>
     </style>
 
     <style name="Theme.MyGameProjekt" parent="Base.Theme.MyGameProjekt" />

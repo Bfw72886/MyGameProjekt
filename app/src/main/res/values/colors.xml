@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- https://piktochart.com/tips/gold-purple-color-palette #1 -->
+    <color name="primary">#6A0DAD</color>
+    <color name="secondary">#FFD700</color>
 </resources>
