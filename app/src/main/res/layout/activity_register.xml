@@ -50,6 +50,17 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@id/usernameLabel" />
 
+    <TextView
+        android:id="@+id/confirmPasswordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_password"
+        android:textSize="@dimen/textSizeButtons"
+        android:labelFor="@id/confirmPasswordInput"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
+
     <EditText
         android:id="@+id/usernameInput"
         android:layout_width="0dp"
@@ -76,6 +87,19 @@
         app:layout_constraintTop_toTopOf="@id/passwordLabel"
         app:layout_constraintBottom_toBottomOf="@id/passwordLabel" />
 
+    <EditText
+        android:id="@+id/confirmPasswordInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Your password"
+        android:inputType="textPassword"
+        android:textSize="@dimen/textSizeButtons"
+        android:padding="0dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLabelInput"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toTopOf="@id/confirmPasswordLabel"
+        app:layout_constraintBottom_toBottomOf="@id/confirmPasswordLabel" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submitButton"
         android:layout_width="0dp"
@@ -94,7 +118,7 @@
         android:layout_marginStart="@dimen/marginBetweenElementsHalved"
         app:layout_constraintStart_toStartOf="@id/guidelineMiddle"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@id/passwordLabel"/>
+        app:layout_constraintTop_toBottomOf="@id/confirmPasswordInput"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTitleContent"
