@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="marginBetweenElements">12dp</dimen>
+    <dimen name="marginBetweenElementsHalved">6dp</dimen>
     <dimen name="paddingHorizontalButton">20dp</dimen>
     <dimen name="drawablePaddingButton">12dp</dimen>
     <dimen name="paddingVerticalButton">12dp</dimen>

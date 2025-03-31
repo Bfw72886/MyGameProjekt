@@ -77,6 +77,26 @@
         app:layout_constraintBottom_toBottomOf="@id/passwordLabel" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/switchToSignupButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeButtons"
+        android:textColor="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
+        android:background="@drawable/round_corners"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
+        android:drawableStart="@drawable/stars"
+        android:text="@string/sign_up"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        android:layout_marginEnd="@dimen/marginBetweenElementsHalved"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineMiddle"
+        app:layout_constraintTop_toBottomOf="@id/passwordLabel"/>
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submitButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -91,7 +111,8 @@
         android:drawableStart="@drawable/stars"
         android:text="@string/login"
         android:layout_marginTop="@dimen/marginBetweenElements"
-        app:layout_constraintStart_toStartOf="@id/guidelineLabelInput"
+        android:layout_marginStart="@dimen/marginBetweenElementsHalved"
+        app:layout_constraintStart_toStartOf="@id/guidelineMiddle"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
         app:layout_constraintTop_toBottomOf="@id/passwordLabel"/>
 
@@ -122,5 +143,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
