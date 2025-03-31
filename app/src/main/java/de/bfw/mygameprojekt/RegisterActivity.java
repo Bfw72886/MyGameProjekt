@@ -1,6 +1,7 @@
 package de.bfw.mygameprojekt;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +52,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Alle Felder ausfüllen", Toast.LENGTH_SHORT).show();
+            } else if (!password.equals(confirmPassword)) {
+                Toast.makeText(this, "Passwörter stimmen nicht überein", Toast.LENGTH_SHORT).show();
+            } else {
+                editor.putString("username", username);
+                editor.putString("password", password);
+                editor.putBoolean("hasSignedUp", true);
+                editor.apply();
+
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
             }
         }
 
