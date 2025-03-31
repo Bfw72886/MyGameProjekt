@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +18,13 @@ import androidx.core.view.WindowInsetsCompat;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     AppCompatButton switchToSignupButton;
+    AppCompatButton submitButton;
+    EditText usernameInput;
+    EditText passwordInput;
 
     SharedPreferences sharedPreferences;
     boolean hasSignedUp;
+    MyGameUser registeredUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +42,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         switchToSignupButton = findViewById(R.id.switchToSignupButton);
         switchToSignupButton.setOnClickListener(this);
+        submitButton = findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(this);
+        usernameInput = findViewById(R.id.usernameInput);
+        passwordInput = findViewById(R.id.passwordInput);
 
         if (hasSignedUp) {
             switchToSignupButton.setVisibility(View.GONE);
-
-            MyGameUser user = new MyGameUser(
-                    sharedPreferences.getString("username", "user"),
-                    sharedPreferences.getString("password", "user")
-            );
         }
+
+        registeredUser = new MyGameUser(
+                sharedPreferences.getString("username", ""),
+                sharedPreferences.getString("password", "")
+        );
     }
 
     @Override
@@ -53,6 +63,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (v.getId() == switchToSignupButton.getId()) {
             Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
+        }
+
+        if (v.getId() == submitButton.getId()) {
+            String username = usernameInput.getText().toString();
+            String password = passwordInput.getText().toString();
+
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Beide Felder ausfüllen", Toast.LENGTH_SHORT).show();
+            } else if (username.equals(registeredUser.getUsername()) && password.equals(registeredUser.getPassword())) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Benutzername oder Passwort falsch oder noch nicht registriert", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
     }
