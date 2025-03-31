@@ -1,6 +1,7 @@
 package de.bfw.mygameprojekt;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     AppCompatButton switchToSignupButton;
 
@@ -34,9 +35,20 @@ public class LoginActivity extends AppCompatActivity {
         hasSignedUp = sharedPreferences.getBoolean("hasSignedUp", false);
 
         switchToSignupButton = findViewById(R.id.switchToSignupButton);
+        switchToSignupButton.setOnClickListener(this);
 
         if (hasSignedUp) {
             switchToSignupButton.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v.getId() == switchToSignupButton.getId()) {
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        }
+
     }
 }
