@@ -39,6 +39,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if (hasSignedUp) {
             switchToSignupButton.setVisibility(View.GONE);
+
+            MyGameUser user = new MyGameUser(
+                    sharedPreferences.getString("username", "user"),
+                    sharedPreferences.getString("password", "user")
+            );
         }
     }
 
