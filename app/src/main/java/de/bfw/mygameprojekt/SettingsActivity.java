@@ -15,6 +15,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Settings Screen that lets user switch light- and darkmode
+ */
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView usernameText;

@@ -11,6 +11,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * About Game Screen
+ */
 public class AboutGameActivity extends AppCompatActivity {
 
     TextView usernameText;

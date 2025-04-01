@@ -1,5 +1,8 @@
 package de.bfw.mygameprojekt;
 
+/**
+ * Object that saves current user log in data
+ */
 public class MyGameUser {
     private String username;
     private String password;

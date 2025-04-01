@@ -15,6 +15,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Sign up Screen that only shows, when user hasn't signed up yet
+ */
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText usernameInput;

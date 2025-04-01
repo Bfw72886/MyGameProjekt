@@ -8,6 +8,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Game Screen that shows "Coming soon...", could be placeholder for animated game
+ */
 public class StartGameActivity extends AppCompatActivity {
 
     @Override

@@ -11,6 +11,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Main menu Screen that lets user navigate to other screens
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     AppCompatButton startGameButton;

@@ -15,6 +15,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Log in Screen that lets user go to main menu
+ */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     AppCompatButton switchToSignupButton;

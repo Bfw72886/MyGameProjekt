@@ -16,6 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Highscore Screen that shows highscores ordered from highest points to lowest
+ */
 public class HighscoresActivity extends AppCompatActivity implements View.OnClickListener {
 
     GridView gridView;
@@ -46,6 +49,12 @@ public class HighscoresActivity extends AppCompatActivity implements View.OnClic
         gridView.setAdapter(adapter);
     }
 
+    /**
+     * Method for getting data for the gridView (3 columns) with header
+     * @param howManyPlayers (user itself included)
+     * @return String[] of data, grouped in sets of three values, like
+     * ["nameOne", "levelOne", "pointsOne", "nameTwo", "levelTwo", "pointsTwo"]
+     */
     private String[] getHighscoreArray(int howManyPlayers) {
         ArrayList<Player> players = new ArrayList<>();
 
