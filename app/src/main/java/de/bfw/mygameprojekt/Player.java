@@ -1,14 +1,14 @@
 package de.bfw.mygameprojekt;
 
-public class Player {
+public class Player implements Comparable<Player>{
     private final String name;
-    private final int Level;
-    private final int Punkte;
+    private final int level;
+    private final int punkte;
 
     public Player(String name, int level, int punkte) {
         this.name = name;
-        Level = level;
-        Punkte = punkte;
+        this.level = level;
+        this.punkte = punkte;
     }
 
     public String getName() {
@@ -16,10 +16,15 @@ public class Player {
     }
 
     public int getLevel() {
-        return Level;
+        return level;
     }
 
     public int getPunkte() {
-        return Punkte;
+        return punkte;
+    }
+
+    @Override
+    public int compareTo(Player otherPlayer) {
+        return otherPlayer.getPunkte() - punkte;
     }
 }
