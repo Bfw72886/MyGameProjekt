@@ -44,18 +44,26 @@ public class HighscoresActivity extends AppCompatActivity {
 
     private String[] getHighscoreArray(int howManyPlayers) {
         ArrayList<Player> players = new ArrayList<>();
+
+        // Add current user to players
         players.add(PlayerGenerator.getCurrentPlayer(getSharedPreferences(
                 "userPrefs", MODE_PRIVATE).getString("username", ""
         )));
+
         for (int i = 1; i < howManyPlayers; i++) {
             players.add(PlayerGenerator.getRandomPlayer());
         }
+
+        // Sort by points
         Collections.sort(players);
 
         ArrayList<String> playerData = new ArrayList<>();
+
+        // Create headers
         playerData.add("Name");
         playerData.add("Level");
         playerData.add("Points");
+
         for (int i = 0; i < players.size(); i++) {
             playerData.add(players.get(i).getName());
             playerData.add(String.valueOf(players.get(i).getLevel()));
