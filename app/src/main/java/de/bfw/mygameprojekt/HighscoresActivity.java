@@ -1,23 +1,25 @@
 package de.bfw.mygameprojekt;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class HighscoresActivity extends AppCompatActivity {
+public class HighscoresActivity extends AppCompatActivity implements View.OnClickListener {
 
     GridView gridView;
+    AppCompatButton startGameButton;
     ArrayAdapter<String> adapter;
 
     String[] playerDataArray;
@@ -34,6 +36,8 @@ public class HighscoresActivity extends AppCompatActivity {
         });
 
         gridView = findViewById(R.id.gridView);
+        startGameButton = findViewById(R.id.startGameButton);
+        startGameButton.setOnClickListener(this);
 
         playerDataArray = getHighscoreArray(5);
 
@@ -71,5 +75,13 @@ public class HighscoresActivity extends AppCompatActivity {
         }
 
         return playerData.toArray(new String[0]);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == startGameButton.getId()) {
+            Intent intent = new Intent(this, StartGameActivity.class);
+            startActivity(intent);
+        }
     }
 }

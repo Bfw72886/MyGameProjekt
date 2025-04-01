@@ -26,6 +26,26 @@
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toTopOf="@id/guidelineTitleContent"
+        app:layout_constraintBottom_toTopOf="@id/startGameButton"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/startGameButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeButtons"
+        android:textColor="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
+        android:background="@drawable/round_corners"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
+        android:drawableStart="@drawable/stars"
+        android:text="@string/start_game"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/gridView"
         app:layout_constraintBottom_toBottomOf="@id/guidelineBottom"/>
 
     <androidx.constraintlayout.widget.Guideline
