@@ -1,12 +1,12 @@
 package de.bfw.mygameprojekt;
 
-import android.app.UiModeManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,9 +58,15 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if (v.getId() == lightModeButton.getId()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            editor.putBoolean("isDarkmode", false);
+            editor.apply();
+            Toast.makeText(this, "Lightmode aktiviert", Toast.LENGTH_SHORT).show();
         }
         if (v.getId() == darkModeButton.getId()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            editor.putBoolean("isDarkmode", true);
+            editor.apply();
+            Toast.makeText(this, "Darkmode aktiviert", Toast.LENGTH_SHORT).show();
         }
 
         if (v.getId() == submitButton.getId()) {

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -50,8 +51,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
 
-        if (hasSignedUp) {
-            switchToSignupButton.setVisibility(View.GONE);
+        if (hasSignedUp) {switchToSignupButton.setVisibility(View.GONE);}
+
+        if (sharedPreferences.getBoolean("isDarkmode", false)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
 
         registeredUser = new MyGameUser(
