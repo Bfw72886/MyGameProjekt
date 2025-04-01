@@ -19,13 +19,48 @@
         app:layout_constraintBottom_toBottomOf="@id/guidelineTitleContent"/>
 
     <TextView
-        android:id="@+id/usernameText"
+        android:id="@+id/usernameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/username"
         android:textSize="@dimen/textSizeButtons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:labelFor="@id/usernameInput"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintTop_toTopOf="@id/guidelineTitleContent" />
+
+    <EditText
+        android:id="@+id/usernameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Your username"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/textSizeButtons"
+        android:padding="0dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLabelInput"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toTopOf="@id/usernameLabel"
+        app:layout_constraintBottom_toBottomOf="@id/usernameLabel"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submitButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeButtons"
+        android:textColor="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
+        android:background="@drawable/round_corners"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
+        android:drawableStart="@drawable/stars"
+        android:text="@string/change_username"
+        android:layout_marginEnd="@dimen/marginBetweenElementsHalved"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/usernameLabel"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/lightModeButton"
@@ -45,7 +80,7 @@
         android:layout_marginTop="@dimen/marginBetweenElements"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintEnd_toStartOf="@id/darkModeButton"
-        app:layout_constraintTop_toBottomOf="@id/usernameText"/>
+        app:layout_constraintTop_toBottomOf="@id/submitButton"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/darkModeButton"
@@ -65,7 +100,7 @@
         android:layout_marginTop="@dimen/marginBetweenElements"
         app:layout_constraintStart_toEndOf="@id/lightModeButton"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@id/usernameText"/>
+        app:layout_constraintTop_toBottomOf="@id/submitButton"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTitleContent"
@@ -87,5 +122,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLabelInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

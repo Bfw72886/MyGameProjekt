@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,11 +21,13 @@ import androidx.core.view.WindowInsetsCompat;
  */
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView usernameText;
+    EditText usernameInput;
+    AppCompatButton submitButton;
     AppCompatButton lightModeButton;
     AppCompatButton darkModeButton;
 
     SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +40,18 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             return insets;
         });
 
-        usernameText = findViewById(R.id.usernameText);
         sharedPreferences = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        usernameInput = findViewById(R.id.usernameInput);
+        submitButton = findViewById(R.id.submitButton);
         lightModeButton = findViewById(R.id.lightModeButton);
         darkModeButton = findViewById(R.id.darkModeButton);
 
-        usernameText.setText(sharedPreferences.getString("username", ""));
+        usernameInput.setText(sharedPreferences.getString("username", ""));
         lightModeButton.setOnClickListener(this);
         darkModeButton.setOnClickListener(this);
+        submitButton.setOnClickListener(this);
     }
 
     @Override
@@ -54,6 +61,19 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }
         if (v.getId() == darkModeButton.getId()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+
+        if (v.getId() == submitButton.getId()) {
+            String newUsername = usernameInput.getText().toString();
+
+            if (!newUsername.isEmpty()) {
+                editor.putString("username", newUsername);
+                editor.apply();
+                Toast.makeText(this, "Benutzername geändert", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Bitte Benutzername eingeben", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 }
