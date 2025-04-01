@@ -35,11 +35,19 @@ public class HighscoresActivity extends AppCompatActivity {
 
         gridView = findViewById(R.id.gridView);
 
+        playerDataArray = getHighscoreArray(5);
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerDataArray);
+
+        gridView.setAdapter(adapter);
+    }
+
+    private String[] getHighscoreArray(int howManyPlayers) {
         ArrayList<Player> players = new ArrayList<>();
         players.add(PlayerGenerator.getCurrentPlayer(getSharedPreferences(
                 "userPrefs", MODE_PRIVATE).getString("username", ""
         )));
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < howManyPlayers; i++) {
             players.add(PlayerGenerator.getRandomPlayer());
         }
         Collections.sort(players);
@@ -54,10 +62,6 @@ public class HighscoresActivity extends AppCompatActivity {
             playerData.add(String.valueOf(players.get(i).getPunkte()));
         }
 
-        playerDataArray = playerData.toArray(new String[0]);
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerDataArray);
-
-        gridView.setAdapter(adapter);
+        return playerData.toArray(new String[0]);
     }
 }
