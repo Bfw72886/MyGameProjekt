@@ -29,11 +29,65 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/lightModeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeButtons"
+        android:textColor="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
+        android:background="@drawable/round_corners"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
+        android:drawableStart="@drawable/stars"
+        android:text="@string/light"
+        android:layout_marginEnd="@dimen/marginBetweenElementsHalved"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toStartOf="@id/darkModeButton"
+        app:layout_constraintTop_toBottomOf="@id/usernameText"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/darkModeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeButtons"
+        android:textColor="?colorSecondary"
+        android:backgroundTint="?colorPrimary"
+        android:background="@drawable/round_corners"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/paddingHorizontalButton"
+        android:paddingVertical="@dimen/paddingVerticalButton"
+        android:drawablePadding="@dimen/drawablePaddingButton"
+        android:drawableStart="@drawable/stars"
+        android:text="@string/dark"
+        android:layout_marginStart="@dimen/marginBetweenElementsHalved"
+        android:layout_marginTop="@dimen/marginBetweenElements"
+        app:layout_constraintStart_toEndOf="@id/lightModeButton"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/usernameText"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTitleContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
