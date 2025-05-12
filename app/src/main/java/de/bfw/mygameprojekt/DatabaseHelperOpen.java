@@ -130,40 +130,43 @@ public class DatabaseHelperOpen extends SQLiteOpenHelper {
     }
 
     /**
-     * update ??? in database
+     * update highscore in database
      *
-     * @param
+     * @param highscore
      * @return true|false if saved or not
      */
-    public boolean update???(???) {
+    public boolean updateHighscores(Highscore highscore) {
         SQLiteDatabase database = getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(?Spalte?, ?Wert?);
-
+        values.put(HIGHSCORES_COLUMN_USERNAME, highscore.getUsername());
+        values.put(HIGHSCORES_COLUMN_POINTS, highscore.getPoints());
 
         // Insert the new row and returning the primary key value of the new row
-        long newRowId = database.update(TABLE_???, values, "_id=" + ???, null);
+        long newRowId = database.update(TABLE_HIGHSCORES, values, "id=" + highscore.getId(), null);
 
         return newRowId != -1;
     }
 
     /**
-     * delete new user in database
+     * delete highscore in database
      *
-     * @param
+     * @param highscore
      * @return true|false if saved or not
      */
-    public boolean delete???(???) {
+    public boolean deleteHighscore(Highscore highscore) {
         SQLiteDatabase database = getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(?Spalte?, ?Wert?);
+        values.put(HIGHSCORES_COLUMN_USERNAME, highscore.getUsername());
+        values.put(HIGHSCORES_COLUMN_POINTS, highscore.getPoints());
+
+        String[] idArray = new String[]{String.valueOf(highscore.getId())};
 
         // Insert the new row and returning the primary key value of the new row
-        long newRowId = database.delete(TABLE_???, "_id=?", new String[]{???)} );
+        long newRowId = database.delete(TABLE_HIGHSCORES, "id=?" + highscore.getId(), idArray );
 
         return newRowId != -1;
     }
@@ -171,23 +174,27 @@ public class DatabaseHelperOpen extends SQLiteOpenHelper {
     /**
      * get all table entries from db
      *
-     * @return list of all ???
+     * @return list of all highscores
      */
-    public ArrayList<???> getAll???() {
+    public ArrayList<Highscore> getAllHighscores() {
         this.database = getReadableDatabase();
-        ArrayList<ShopingItem> list = new ArrayList<>();
+        ArrayList<Highscore> list = new ArrayList<>();
 
-        String sql = "SELECT  * FROM " + TABLE_???;
+        String sql = "SELECT * FROM " + TABLE_HIGHSCORES;
         Cursor cursorItems = database.rawQuery(sql, null);
 
         if (cursorItems.moveToFirst()) {
             do {
-                int _id = cursorItems.getInt(0);
+                int id = cursorItems.getInt(0);
+                String username = cursorItems.getString(1);
+                int points = cursorItems.getInt(2);
+
+                Highscore highscore = new Highscore(id, username, points);
                 // usw.
 
                 // Objekt erstellen und in die Liste packen
 
-                list.add(shopingItem);
+                list.add(highscore);
 
             } while (cursorItems.moveToNext());
         }
