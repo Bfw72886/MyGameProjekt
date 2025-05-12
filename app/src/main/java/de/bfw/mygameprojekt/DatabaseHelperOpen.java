@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class DatabaseHelperOpen extends SQLiteOpenHelper {
 
-    private final Context context;
+    private Context context;
     private SQLiteDatabase database;
 
     // database
@@ -23,10 +23,13 @@ public class DatabaseHelperOpen extends SQLiteOpenHelper {
     private static String dbPath = "";
 
     //tables
-    private static final String TABLE_??? = "???";
+    private static final String TABLE_HIGHSCORES = "tbl_highscores";
 
     // table ITEMS
-    private static final String ITEMS_COLUMN_ID = "???";
+    private static final String HIGHSCORES_COLUMN_ID = "id";
+    private static final String HIGHSCORES_COLUMN_USERNAME = "username";
+    private static final String HIGHSCORES_COLUMN_POINTS = "points";
+
     // usw.
 
     public DatabaseHelperOpen(Context context) {
@@ -107,20 +110,21 @@ public class DatabaseHelperOpen extends SQLiteOpenHelper {
     }
 
     /**
-     * write new ??? in database
+     * write new highscore in database
      *
-     * @param
+     * @param highscore new highscore entry
      * @return true|false if saved or not
      */
-    public boolean instert???(???) {
+    public boolean insertHighscore(Highscore highscore) {
         SQLiteDatabase database = getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(?Spalte?, ?Wert?);
+        values.put(HIGHSCORES_COLUMN_USERNAME, highscore.getUsername());
+        values.put(HIGHSCORES_COLUMN_POINTS, highscore.getPoints());
 
         // Insert the new row and returning the primary key value of the new row
-        long newRowId = database.insert(TABLE_???, null, values);
+        long newRowId = database.insert(TABLE_HIGHSCORES, null, values);
 
         return newRowId != -1;
     }
