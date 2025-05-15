@@ -26,6 +26,7 @@ public class HighscoresActivity extends AppCompatActivity implements View.OnClic
     ArrayAdapter<String> adapter;
 
     String[] playerDataArray;
+    ArrayList<Highscore> highscores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,30 @@ public class HighscoresActivity extends AppCompatActivity implements View.OnClic
         startGameButton = findViewById(R.id.startGameButton);
         startGameButton.setOnClickListener(this);
 
-        playerDataArray = getHighscoreArray(5);
+
+        // TODO FEHLERSUCHE AB HIER
+        // database part
+        try (DatabaseHelperOpen databaseHelperOpen = new DatabaseHelperOpen(this)){
+            highscores = databaseHelperOpen.getAllHighscores();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<String> highScoresFlat = new ArrayList<>();
+        highScoresFlat.add("ID");
+        highScoresFlat.add("Username");
+        highScoresFlat.add("Points");
+
+        for (Highscore highscoreobject : highscores) {
+            String id = String.valueOf(highscoreobject.getId());
+            String name = highscoreobject.getUsername();
+            String points = String.valueOf(highscoreobject.getPoints());
+            highScoresFlat.add(id);
+            highScoresFlat.add(name);
+            highScoresFlat.add(points);
+        }
+        // playerDataArray = getHighscoreArray(5);
+        playerDataArray = highScoresFlat.toArray(playerDataArray);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerDataArray);
 

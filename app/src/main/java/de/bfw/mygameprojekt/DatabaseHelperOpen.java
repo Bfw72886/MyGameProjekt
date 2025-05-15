@@ -45,7 +45,7 @@ public class DatabaseHelperOpen extends SQLiteOpenHelper {
                 HIGHSCORES_COLUMN_ID + " INT PRIMARY KEY AUTOINCREMENT, " +
                 HIGHSCORES_COLUMN_USERNAME + " VARCHAR(50), " +
                 HIGHSCORES_COLUMN_POINTS + " INT)";
-        db.execSQL(sql);
+        database.execSQL(sql);
     }
 
     @Override
