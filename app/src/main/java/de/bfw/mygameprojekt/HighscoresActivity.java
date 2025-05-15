@@ -24,9 +24,9 @@ public class HighscoresActivity extends AppCompatActivity implements View.OnClic
     GridView gridView;
     AppCompatButton startGameButton;
     ArrayAdapter<String> adapter;
-
-    String[] playerDataArray;
     ArrayList<Highscore> highscores;
+    ArrayList<String> highScoresFlat;
+    String[] playerDataArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,30 +43,34 @@ public class HighscoresActivity extends AppCompatActivity implements View.OnClic
         startGameButton = findViewById(R.id.startGameButton);
         startGameButton.setOnClickListener(this);
 
-
-        // TODO FEHLERSUCHE AB HIER
         // database part
-        try (DatabaseHelperOpen databaseHelperOpen = new DatabaseHelperOpen(this)){
+        try (DatabaseHelperOpen databaseHelperOpen = new DatabaseHelperOpen(this)) {
             highscores = databaseHelperOpen.getAllHighscores();
+            databaseHelperOpen.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        ArrayList<String> highScoresFlat = new ArrayList<>();
+        highScoresFlat = new ArrayList<>();
+        // header
         highScoresFlat.add("ID");
         highScoresFlat.add("Username");
         highScoresFlat.add("Points");
 
-        for (Highscore highscoreobject : highscores) {
-            String id = String.valueOf(highscoreobject.getId());
-            String name = highscoreobject.getUsername();
-            String points = String.valueOf(highscoreobject.getPoints());
-            highScoresFlat.add(id);
-            highScoresFlat.add(name);
-            highScoresFlat.add(points);
+        // object entries from highscores to arraylist in groups of 3
+        if (highscores != null) {
+            for (Highscore highscoreobject : highscores) {
+                String id = String.valueOf(highscoreobject.getId());
+                String username = highscoreobject.getUsername();
+                String points = String.valueOf(highscoreobject.getPoints());
+                highScoresFlat.add(id);
+                highScoresFlat.add(username);
+                highScoresFlat.add(points);
+            }
         }
+
         // playerDataArray = getHighscoreArray(5);
-        playerDataArray = highScoresFlat.toArray(playerDataArray);
+        playerDataArray = highScoresFlat.toArray(new String[0]);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerDataArray);
 
