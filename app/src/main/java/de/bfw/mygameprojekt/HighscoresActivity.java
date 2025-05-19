@@ -45,8 +45,9 @@ public class HighscoresActivity extends AppCompatActivity implements View.OnClic
 
         // database part
         try (DatabaseHelperOpen databaseHelperOpen = new DatabaseHelperOpen(this)) {
+            // createDummyData();
             highscores = databaseHelperOpen.getAllHighscores();
-            databaseHelperOpen.close();
+            highscores.sort(Collections.reverseOrder());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,6 +120,17 @@ public class HighscoresActivity extends AppCompatActivity implements View.OnClic
         if (v.getId() == startGameButton.getId()) {
             Intent intent = new Intent(this, StartGameActivity.class);
             startActivity(intent);
+        }
+    }
+
+    private void createDummyData() {
+        for (int i = 0; i < 5; i++) {
+            Highscore highscore = new Highscore(i + 1, "test" + i, i * 4 * i);
+            try (DatabaseHelperOpen databaseHelperOpen = new DatabaseHelperOpen(this)) {
+                databaseHelperOpen.insertHighscore(highscore);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

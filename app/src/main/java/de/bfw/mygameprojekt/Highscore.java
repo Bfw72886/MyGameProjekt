@@ -1,6 +1,6 @@
 package de.bfw.mygameprojekt;
 
-public class Highscore {
+public class Highscore implements Comparable<Highscore>{
 
     private final int id;
     private final String username;
@@ -26,5 +26,10 @@ public class Highscore {
 
     public int getPoints() {
         return points;
+    }
+
+    @Override
+    public int compareTo(Highscore o) {
+        return this.getPoints() - o.getPoints();
     }
 }
